@@ -90,9 +90,25 @@ console.log(result3);
 
 
     // 👉 CHALLENGE 4
-    function scrub(text, forbidden) {
+   function scrub(text, forbidden) {
+  if (text === "" || forbidden.length === 0) {
+    return text;
+  }
 
+  // Replace forbidden words with "x" characters
+  const words = text.split(" ");
+  const scrubbedWords = words.map(word => {
+    if (forbidden.includes(word.toLowerCase())) {
+      return "x".repeat(word.length);
     }
+    return word;
+  });
+
+  // put words back into a string
+  const scrubbedText = scrubbedWords.join(" ");
+
+  return scrubbedText;
+}
 
     // 👉 CHALLENGE 5 (bonus, NOT graded)
     function normalizePhoneNumber(num) {
