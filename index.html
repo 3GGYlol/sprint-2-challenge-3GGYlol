@@ -65,8 +65,29 @@ console.log(result3);
 
     // 👉 CHALLENGE 3
     function booleanize(obj) {
+  const result = {};
 
+  for (const key in obj) {
+    // Check property name length
+    if (key.length > 9) {
+      return "shorten all prop names to 9 chars or less";
     }
+
+    
+    if (obj[key] === 0) {
+      result[key] = false;
+    } else if (obj[key] === 1) {
+      result[key] = true;
+    } else if (obj[key] !== null) {
+      // Keep values except null
+      result[key] = obj[key];
+    }
+    // Null values won't be included in the result
+  }
+
+  return result;
+}
+
 
     // 👉 CHALLENGE 4
     function scrub(text, forbidden) {
