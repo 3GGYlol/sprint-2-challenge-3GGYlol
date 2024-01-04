@@ -5,9 +5,46 @@
   <title>Web Sprint 2 Challenge</title>
   <script id="challenge">
     // 👉 CHALLENGE 1
-    function profileActivation(profile, reason) {
-
+     function profileActivation(profile, reason) {
+  if (profile.active) {
+    if (reason === undefined) {
+      return "confirm status manually";
+    } else {
+      profile.active = false;
+      profile.reason = reason;
     }
+  } else {
+    // If the profile is currently inactive
+    profile.active = true;
+    // Remove the reason property from the profile
+    delete profile.reason;
+  }
+
+  return profile;
+}
+
+
+let testProfile1 = {
+  active: false,
+  reason: "Not logged in for 30 days"
+};
+
+let result1 = profileActivation(testProfile1);
+console.log(result1);
+let testProfile2 = {
+  active: true,
+  reason: undefined
+};
+
+let result2 = profileActivation(testProfile2, "Not logged in for 30 days");
+console.log(result2);
+let testProfile3 = {
+  active: true,
+  reason: undefined
+};
+
+let result3 = profileActivation(testProfile3);
+console.log(result3);
 
     // 👉 CHALLENGE 2
     function mineSweeper(grid, x, y) {
